@@ -12,6 +12,7 @@ import { Location } from "src/feature/Location";
 import { Dashboard } from "src/feature/Dashboard";
 import { isCoordinates } from "./util";
 import { getReverseGeocode } from "./provider";
+import { locationLoader } from "src/loaders";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -28,23 +29,7 @@ const router = createBrowserRouter([
       {
         path: "/location/:lat/:lon",
         element: <Location />,
-        loader: async ({ params }) => {
-          if (!params.lat || !params.lon) {
-            throw Error();
-          }
-          if (
-            !isCoordinates({
-              lat: parseFloat(params.lat),
-              lon: parseFloat(params.lon),
-            })
-          ) {
-            throw Error();
-          }
-          return getReverseGeocode({
-            lat: parseFloat(params.lat),
-            lon: parseFloat(params.lon),
-          });
-        },
+        loader: locationLoader,
         errorElement: (
           <div>
             You lost bro? What kind of location is that? Try search again

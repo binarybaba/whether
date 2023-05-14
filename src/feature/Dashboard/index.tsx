@@ -9,7 +9,7 @@ export const Dashboard = () => {
         {store.favorites.map(({ geocode }) => (
           <Link
             key={geocode.place_id}
-            to={`/location?lat=${geocode.lat}&lon=${geocode.lon}`}
+            to={`/location/${geocode.lat}/${geocode.lon}`}
           >
             {geocode.address?.place}
           </Link>

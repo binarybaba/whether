@@ -32,7 +32,7 @@ export const DEFAULT_STATE: Store = {
       geocode: {
         lat: -33.8548157,
         lon: 151.2164539,
-        place_id: 123,
+        place_id: 288026077,
         address: {
           country: "Australia",
           country_code: "AU",
@@ -44,7 +44,7 @@ export const DEFAULT_STATE: Store = {
       geocode: {
         lat: 51.4538022,
         lon: -2.5972985,
-        place_id: 456,
+        place_id: 10273833,
         address: {
           country: "United Kingdom",
           country_code: "GB",

@@ -148,6 +148,7 @@ export type MapsCoReverseGeocode = MapsCoGeocode & {
   address: {
     country: string;
     country_code: string;
+    city?: string;
     place?: string;
     municipality?: string;
     county?: string;
