@@ -10,6 +10,8 @@ import {
 import { Root } from "src/feature/Root";
 import { Location } from "src/feature/Location";
 import { Dashboard } from "src/feature/Dashboard";
+import { isCoordinates } from "./util";
+import { getReverseGeocode } from "./provider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -24,12 +26,38 @@ const router = createBrowserRouter([
         index: true,
       },
       {
-        path: "/location",
+        path: "/location/:lat/:lon",
         element: <Location />,
-        errorElement: <div>Det er fail</div>,
+        loader: async ({ params }) => {
+          if (!params.lat || !params.lon) {
+            throw Error();
+          }
+          if (
+            !isCoordinates({
+              lat: parseFloat(params.lat),
+              lon: parseFloat(params.lon),
+            })
+          ) {
+            throw Error();
+          }
+          return getReverseGeocode({
+            lat: parseFloat(params.lat),
+            lon: parseFloat(params.lon),
+          });
+        },
+        errorElement: (
+          <div>
+            You lost bro? What kind of location is that? Try search again
+          </div>
+        ),
       },
     ],
-    errorElement: <div>Det er fail</div>,
+    errorElement: (
+      <div>
+        Something has gone horribly wrong and we are not doing anything to fix
+        it
+      </div>
+    ),
   },
   {
     path: "*",

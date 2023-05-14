@@ -16,7 +16,7 @@ export const Search = () => {
   );
   const handleGeocodeClick = (geocode: MapsCoGeocode) => {
     setTypingQuery("");
-    navigate(`/location?lat=${geocode.lat}&lon=${geocode.lon}`);
+    navigate(`/location/${geocode.lat}/${geocode.lon}`);
   };
   return (
     <>
