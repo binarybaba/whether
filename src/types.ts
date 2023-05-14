@@ -135,8 +135,8 @@ export type MapsCoGeocode = {
   class: string;
   display_name: string;
   importance: number;
-  lat: string;
-  lon: string;
+  lat: number;
+  lon: number;
   osm_id: string;
   osm_type: string;
   place_id: number;
@@ -159,4 +159,9 @@ export type MapsCoReverseGeocode = MapsCoGeocode & {
 export type Coordinates = {
   lat: number;
   lon: number;
+};
+
+export type Location = {
+  geocode: Partial<MapsCoReverseGeocode> & Coordinates;
+  weather?: TomorrowForecast;
 };
