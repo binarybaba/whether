@@ -10,8 +10,6 @@ import {
 import { Root } from "src/feature/Root";
 import { Location } from "src/feature/Location";
 import { Dashboard } from "src/feature/Dashboard";
-import { isCoordinates } from "./util";
-import { getReverseGeocode } from "./provider";
 import { locationLoader } from "src/loaders";
 
 const root = ReactDOM.createRoot(

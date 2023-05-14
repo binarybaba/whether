@@ -3,7 +3,6 @@ import { Location as LocationType } from "src/types";
 
 export const Location = () => {
   const { geocode, weather } = useLoaderData() as LocationType;
-  console.log(geocode.address);
   return (
     <div>
       <div>
