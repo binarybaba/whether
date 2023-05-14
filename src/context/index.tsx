@@ -32,6 +32,7 @@ export const DEFAULT_STATE: Store = {
       geocode: {
         lat: -33.8548157,
         lon: 151.2164539,
+        place_id: 123,
         address: {
           country: "Australia",
           country_code: "AU",
@@ -43,6 +44,7 @@ export const DEFAULT_STATE: Store = {
       geocode: {
         lat: 51.4538022,
         lon: -2.5972985,
+        place_id: 456,
         address: {
           country: "United Kingdom",
           country_code: "GB",
@@ -75,13 +77,13 @@ export const reducer = (state: Store, action: ChangeSystemAction): Store => {
 };
 
 export const AppContext = createContext<
-  { state: Store; dispatch: Dispatch } | undefined
+  { store: Store; dispatch: Dispatch } | undefined
 >(undefined);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(reducer, DEFAULT_STATE);
+  const [store, dispatch] = useReducer(reducer, DEFAULT_STATE);
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
+    <AppContext.Provider value={{ store, dispatch }}>
       {children}
     </AppContext.Provider>
   );
