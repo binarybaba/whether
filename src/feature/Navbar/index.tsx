@@ -1,3 +1,9 @@
+import { Search } from "./Search";
+
 export const Navbar = () => {
-  return <div>Navbar</div>;
+  return (
+    <div>
+      <Search />
+    </div>
+  );
 };
