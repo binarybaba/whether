@@ -143,3 +143,20 @@ export type MapsCoGeocode = {
   powered_by: string;
   type: string;
 };
+
+export type MapsCoReverseGeocode = MapsCoGeocode & {
+  address: {
+    country: string;
+    country_code: string;
+    place?: string;
+    municipality?: string;
+    county?: string;
+    state?: string;
+    town?: string;
+  };
+};
+
+export type Coordinates = {
+  lat: number;
+  lon: number;
+};

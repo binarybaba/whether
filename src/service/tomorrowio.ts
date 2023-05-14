@@ -1,6 +1,8 @@
-import { TomorrowForecast } from "src/types";
+import { Coordinates, TomorrowForecast } from "src/types";
 
-export const fetchWeatherByCoordinates = async (): Promise<TomorrowForecast> =>
+export const fetchWeatherByCoordinates = async (
+  coordinates: Coordinates
+): Promise<TomorrowForecast> =>
   new Promise((resolve) => {
     resolve({
       timelines: {
@@ -16,5 +18,6 @@ export const fetchWeatherByCoordinates = async (): Promise<TomorrowForecast> =>
           },
         ],
       },
+      location: coordinates,
     });
   });

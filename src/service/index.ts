@@ -1,4 +1,8 @@
-import { fetchGeocodesByKeyword } from "./mapsco";
+import { fetchGeocodesByKeyword, fetchReverseGecode } from "./mapsco";
 import { fetchWeatherByCoordinates } from "./tomorrowio";
 
-export { fetchWeatherByCoordinates, fetchGeocodesByKeyword };
+export {
+  fetchWeatherByCoordinates,
+  fetchGeocodesByKeyword,
+  fetchReverseGecode,
+};
