@@ -1,15 +1,34 @@
-import { useLoaderData } from "react-router-dom";
-import { Location as LocationType } from "src/types";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getReverseGeocode, getWeather } from "../../provider";
 
 export const Location = () => {
-  const { geocode, weather } = useLoaderData() as LocationType;
+  const params = useParams();
+  const coordinates = {
+    // @ts-ignore
+    lat: parseFloat(params.lat), // @ts-ignore
+    lon: parseFloat(params.lon),
+  };
+  const { data: geocode } = useQuery(["reverseGeolocation", coordinates], () =>
+    getReverseGeocode(coordinates)
+  );
+
+  const { data: weather, status } = useQuery(
+    ["weather", coordinates],
+    () => getWeather(coordinates),
+    { refetchOnWindowFocus: false, retry: false }
+  );
+
   return (
     <div>
-      <div>
-        {geocode.address?.city ||
-          geocode.address?.municipality ||
-          geocode.address?.county}
-      </div>
+      {geocode && (
+        <div>
+          {geocode.address?.city ||
+            geocode.address?.municipality ||
+            geocode.address?.county}
+        </div>
+      )}
+      <div>{status}</div>
       <div>Low: {weather?.timelines.daily[0].values.temperatureMin}</div>
       <div>High: {weather?.timelines.daily[0].values.temperatureMax}</div>
       <div>

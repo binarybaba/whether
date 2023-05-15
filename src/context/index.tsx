@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useReducer } from "react";
 import type { Location } from "src/types";
 
-enum UNIT_SYSTEM {
+export enum UNIT_SYSTEM {
   METRIC = "metric",
   IMPERIAL = "imperial",
 }

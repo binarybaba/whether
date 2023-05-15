@@ -1,4 +1,9 @@
 import { getGeocodeListByKeyword, getReverseGeocode } from "./geocode";
-import { getWeather } from "./weather";
+import { getWeather, getWeatherCondition } from "./weather";
 
-export { getGeocodeListByKeyword, getReverseGeocode, getWeather };
+export {
+  getGeocodeListByKeyword,
+  getReverseGeocode,
+  getWeather,
+  getWeatherCondition,
+};
