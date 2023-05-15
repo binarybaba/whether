@@ -10,8 +10,12 @@ export const Root = () => {
     <AppProvider>
       <QueryClientProvider client={queryClient}>
         {navigation.state === "loading" && <div>LOADING</div>}
-        <Navbar />
-        <Outlet />
+        <div className="flex flex-col min-h-screen h-screen">
+          <Navbar />
+          <div className="flex-grow overflow-y-auto">
+            <Outlet />
+          </div>
+        </div>
       </QueryClientProvider>
     </AppProvider>
   );

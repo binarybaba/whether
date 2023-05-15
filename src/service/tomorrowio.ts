@@ -15,6 +15,7 @@ export const fetchWeatherByCoordinates = async (
               temperatureMax: 17,
               temperatureAvg: 16,
               weatherCodeMax: 7114,
+              temperatureApparentAvg: 18,
             },
           },
         ],
