@@ -19,18 +19,5 @@ export const locationLoader: LoaderFunction = async ({ params }: Params) => {
     throw Error();
   }
 
-  return new Promise((resolve, reject) => {
-    getReverseGeocode({ lat, lon })
-      .then((geocode) => {
-        getWeather({ lat, lon })
-          .then((weather) => {
-            resolve({
-              geocode,
-              weather,
-            });
-          })
-          .catch((e) => reject(e));
-      })
-      .catch((e) => reject(e));
-  });
+  return new Promise((resolve) => resolve("")); // dummy so we can validate up top
 };
