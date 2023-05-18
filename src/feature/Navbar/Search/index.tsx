@@ -45,7 +45,7 @@ export const Search = () => {
         </Combobox.Button>
 
         {searchResults && searchResults.length > 0 && (
-          <Combobox.Options className="absolute z-10 mt-1 min-h-full md:max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+          <Combobox.Options className="absolute  left-0 z-10 mt-1 min-h-full min-w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {searchResults.map((geocode) => (
               <Combobox.Option
                 key={geocode.place_id}
