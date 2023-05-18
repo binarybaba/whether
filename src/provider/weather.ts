@@ -1,5 +1,5 @@
 import { fetchWeatherByCoordinates } from "src/service";
-import { Coordinates } from "src/types";
+import { UNIT_SYSTEM } from "src/context";
 
 const WEATHER_CODES = {
   "1000": "Clear, Sunny",
@@ -100,12 +100,14 @@ const WEATHER_CODES = {
 export const getWeather = async ({
   lat,
   lon,
+  units,
 }: {
   lat?: number;
   lon?: number;
+  units: UNIT_SYSTEM;
 }) => {
   if (!lat || !lon) throw new ReferenceError("Cant find coordinates");
-  return await fetchWeatherByCoordinates({ lat, lon });
+  return await fetchWeatherByCoordinates({ lat, lon, units });
 };
 
 export const getWeatherCondition = (code?: number) => {

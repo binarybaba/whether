@@ -16,8 +16,8 @@ export const Favorite = ({
     },
   } = useAppContext();
   const { data: weather, status } = useQuery(
-    [`weather`, { lat: geocode.lat, lon: geocode.lon }],
-    () => getWeather({ lat: geocode.lat, lon: geocode.lon }),
+    [`weather`, { lat: geocode.lat, lon: geocode.lon, units }],
+    () => getWeather({ lat: geocode.lat, lon: geocode.lon, units }),
     { refetchOnWindowFocus: false, retry: false }
   );
   return (

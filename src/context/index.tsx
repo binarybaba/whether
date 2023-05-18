@@ -11,7 +11,7 @@ export enum ActionType {
   FAVORITE = "FAVORITE",
 }
 
-type Settings = {
+export type Settings = {
   units: UNIT_SYSTEM.METRIC | UNIT_SYSTEM.IMPERIAL;
 };
 

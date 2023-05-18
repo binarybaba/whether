@@ -1,9 +1,11 @@
 import { Coordinates, TomorrowForecast } from "src/types";
+import { UNIT_SYSTEM } from "src/context";
 
 export const fetchWeatherByCoordinates = async (
-  coordinates: Coordinates
+  args: Coordinates & { units: UNIT_SYSTEM }
 ): Promise<TomorrowForecast> =>
   new Promise((resolve) => {
+    console.log("resolving for", args.units);
     resolve({
       timelines: {
         daily: [
@@ -28,6 +30,9 @@ export const fetchWeatherByCoordinates = async (
           },
         ],
       },
-      location: coordinates,
+      location: {
+        lat: args.lat,
+        lon: args.lon,
+      },
     });
   });

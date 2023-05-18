@@ -13,9 +13,19 @@ import {
   EyeIcon,
 } from "@heroicons/react/20/solid";
 import { FavoriteIt } from "./FavoriteIt";
+import { useAppContext } from "src/hooks";
+
+function classNames(...classes: Array<string>) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export const Location = () => {
   const params = useParams();
+  const {
+    store: {
+      settings: { units },
+    },
+  } = useAppContext();
   const coordinates = {
     // @ts-ignore
     lat: parseFloat(params.lat), // @ts-ignore
@@ -25,9 +35,9 @@ export const Location = () => {
     getReverseGeocode(coordinates)
   );
 
-  const { data: weather, status } = useQuery(
-    ["weather", coordinates],
-    () => getWeather(coordinates),
+  const { data: weather, isLoading } = useQuery(
+    ["weather", { ...coordinates, units }],
+    () => getWeather({ ...coordinates, units }),
     { refetchOnWindowFocus: false, retry: false }
   );
   if (!geocode) return null;

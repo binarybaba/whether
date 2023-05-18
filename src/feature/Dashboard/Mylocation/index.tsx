@@ -12,13 +12,18 @@ export const MyLocation = ({
   const {
     coords: { latitude: lat, longitude: lon },
   } = userGeolocation;
-  const { dispatch } = useAppContext();
+  const {
+    store: {
+      settings: { units },
+    },
+    dispatch,
+  } = useAppContext();
   const { data: geocode } = useQuery(["reverseGeolocation", { lat, lon }], () =>
     getReverseGeocode({ lat, lon })
   );
   const { data: weather } = useQuery(
-    [`weather`, { lat: geocode?.lat, lon: geocode?.lon }],
-    () => getWeather({ lat: geocode?.lat, lon: geocode?.lon }),
+    [`weather`, { lat: geocode?.lat, lon: geocode?.lon, units }],
+    () => getWeather({ lat: geocode?.lat, lon: geocode?.lon, units }),
     { refetchOnWindowFocus: false, retry: false, enabled: !!geocode }
   );
   useEffect(() => {
