@@ -4,12 +4,12 @@
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
 import axios from "axios";
-import MockAdapter from "axios-mock-adapter";
-export const mock = new MockAdapter(axios);
-
-mock.onGet("forecast").reply(200, {
-});
-
-mock.onGet("geocode").reply(200, {
-    users: [{ id: 1, name: "John Smith" }],
+jest.mock("axios");
+export const mockedAxios = axios as jest.Mocked<typeof axios>;
+mockedAxios.get.mockImplementation((url) => {
+  return Promise.resolve({
+    data: {
+      users: [{ id: 1, name: "John Smith" }],
+    },
+  });
 });
