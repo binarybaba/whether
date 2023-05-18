@@ -24,7 +24,10 @@ export const Settings = () => {
     <div className="flex flex-row-reverse">
       <Menu as="div" className="relative inline-block text-left max-w-[60px]">
         <div>
-          <Menu.Button className="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+          <Menu.Button
+            className="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            data-testid="settings-button"
+          >
             <CogIcon
               className="mr-1 h-5 w-5 text-gray-900 "
               aria-hidden="true"
@@ -47,6 +50,7 @@ export const Settings = () => {
                 {({ active }) => (
                   <div
                     role="button"
+                    data-testid="metric-button"
                     onClick={() => handleSettingChange(UNIT_SYSTEM.METRIC)}
                     className={classNames(
                       active || units === UNIT_SYSTEM.METRIC
@@ -63,6 +67,7 @@ export const Settings = () => {
                 {({ active }) => (
                   <div
                     role="button"
+                    data-testid="imperial-button"
                     onClick={() => handleSettingChange(UNIT_SYSTEM.IMPERIAL)}
                     className={classNames(
                       active || units === UNIT_SYSTEM.IMPERIAL

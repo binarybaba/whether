@@ -1,4 +1,8 @@
-import { MapsCoGeocode, TomorrowForecast } from "src/types";
+import {
+  MapsCoGeocode,
+  MapsCoReverseGeocode,
+  TomorrowForecast,
+} from "src/types";
 import { HeartIcon } from "@heroicons/react/20/solid";
 import { useAppContext } from "src/hooks";
 import { ActionType } from "../../../context";
@@ -11,7 +15,7 @@ export const FavoriteIt = ({
   geocode,
   weather,
 }: {
-  geocode: MapsCoGeocode;
+  geocode: MapsCoReverseGeocode;
   weather: TomorrowForecast;
 }) => {
   const {
@@ -36,7 +40,7 @@ export const FavoriteIt = ({
   };
 
   return (
-    <button type="button" onClick={handleClick}>
+    <button type="button" onClick={handleClick} data-testid="favorite-button">
       <HeartIcon
         className={classNames(
           isAFavorite ? "text-rose-600" : "text-stone-300",
