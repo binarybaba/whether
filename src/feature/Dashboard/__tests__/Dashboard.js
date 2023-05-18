@@ -1,4 +1,3 @@
-import mockAxios from "jest-mock-axios";
 import { AppContext } from "src/context";
 import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
