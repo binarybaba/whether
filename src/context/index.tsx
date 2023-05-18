@@ -6,7 +6,7 @@ export enum UNIT_SYSTEM {
   IMPERIAL = "imperial",
 }
 
-enum ActionType {
+export enum ActionType {
   CHANGE_UNITS = "CHANGE_UNITS",
 }
 
