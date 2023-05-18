@@ -3,7 +3,7 @@ import { AppContext, AppProvider } from "src/context";
 import { render, screen } from "@testing-library/react";
 import { DEFAULT_STATE } from "src/context";
 
-describe("useFavorites", function () {
+describe("useAppContext", function () {
   it("should throw when used without Provider", () => {
     const runner = () => {
       const WithoutProvider = () => {

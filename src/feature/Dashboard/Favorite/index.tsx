@@ -22,7 +22,10 @@ export const Favorite = ({
     { refetchOnWindowFocus: false, retry: false }
   );
   return (
-    <div className="min-h-[120px] m-2 md:w-[20vw] flex justify-between rounded-xl p-2 bg-gray-50 ring-1 ring-black ring-opacity-5 shadow select-none transition-all">
+    <div
+      className="min-h-[120px] m-2 md:w-[20vw] flex justify-between rounded-xl p-2 bg-gray-50 ring-1 ring-black ring-opacity-5 shadow select-none transition-all"
+      data-testid="favorite"
+    >
       <div className="flex flex-col justify-between">
         <div className="align-middle">
           <div className="font-bold text-xl text-zinc-700">
