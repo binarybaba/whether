@@ -32,15 +32,15 @@ export const Location = () => {
   if (!geocode) return null;
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center h-full">
       <div className="max-w-6xl flex w-full flex-col md:flex-row justify-center md:justify-around">
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center items-center ring">
           <div className="text-xl font-semibold text-zinc-600 text-center -ml-2">
             {geocode.address?.city ||
               geocode.address?.municipality ||
               geocode.address?.county}
           </div>
-          <div className="font-extralight text-6xl text-center text-zinc-700 -mt-2">
+          <div className="font-extralight text-6xl text-center text-zinc-700 ">
             {weather?.timelines.daily[0].values.temperatureAvg}°
           </div>
           <div className="flex justify-center font-semibold text-zinc-500">
@@ -59,33 +59,35 @@ export const Location = () => {
             {weather?.timelines.daily[0].values.temperatureApparentAvg}°
           </div>
         </div>
-        <div className="p-4 flex flex-row flex-wrap justify-center">
-          <div className=" max-w-sm flex flex-row flex-wrap justify-center">
-            <Tile
-              Icon={<SunIcon />}
-              name="Sunrise"
-              data="10:04"
-              additionalData="© Tomorrow.io"
-            />
-            <Tile
-              Icon={<MoonIcon />}
-              name="Sunset"
-              data="10:04"
-              additionalData="© Tomorrow.io"
-            />
-            <Tile
-              Icon={<CloudIcon />}
-              name="Humidity"
-              data="10:04"
-              additionalData="© Tomorrow.io"
-            />
-            <Tile
-              Icon={<EyeIcon />}
-              name="Visibility"
-              data="10:04"
-              additionalData="© Tomorrow.io"
-            />
-          </div>
+        <div className="p-4 flex flex-row flex-wrap justify-center ring items-center">
+          {weather && (
+            <div className=" max-w-sm flex flex-row flex-wrap justify-center">
+              <Tile
+                Icon={<SunIcon />}
+                id="sunrise"
+                data={new Date(weather.timelines.daily[0].values.sunriseTime)}
+                additionalData="© Tomorrow.io"
+              />
+              <Tile
+                Icon={<MoonIcon />}
+                id="sunset"
+                data={new Date(weather.timelines.daily[0].values.sunsetTime)}
+                additionalData="© Tomorrow.io"
+              />
+              <Tile
+                Icon={<CloudIcon />}
+                id="humidity"
+                data={weather?.timelines.daily[0].values.humidityAvg}
+                additionalData={`L:${weather.timelines.daily[0].values.humidityMin} H:${weather.timelines.daily[0].values.humidityMax}`}
+              />
+              <Tile
+                Icon={<EyeIcon />}
+                id="visibility"
+                data={weather?.timelines.daily[0].values.visibilityAvg}
+                additionalData={`L:${weather.timelines.daily[0].values.visibilityMin} H:${weather.timelines.daily[0].values.visibilityMax}`}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
