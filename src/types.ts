@@ -165,4 +165,5 @@ export type Coordinates = {
 export type Location = {
   geocode: Partial<MapsCoReverseGeocode> & Coordinates;
   weather?: TomorrowForecast;
+  isCurrent?: boolean;
 };

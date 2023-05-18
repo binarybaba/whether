@@ -1,3 +1,4 @@
 import { useAppContext } from "./useAppContext";
 import { useDebouncedValue } from "./useDebouncedValue";
-export { useAppContext, useDebouncedValue };
+import { useGeolocation } from "./useGeolocation";
+export { useAppContext, useDebouncedValue, useGeolocation };

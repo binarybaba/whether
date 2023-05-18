@@ -97,8 +97,15 @@ const WEATHER_CODES = {
   "8000": "Thunderstorm",
 };
 
-export const getWeather = async (args: Coordinates) => {
-  return await fetchWeatherByCoordinates(args);
+export const getWeather = async ({
+  lat,
+  lon,
+}: {
+  lat?: number;
+  lon?: number;
+}) => {
+  if (!lat || !lon) throw new ReferenceError("Cant find coordinates");
+  return await fetchWeatherByCoordinates({ lat, lon });
 };
 
 export const getWeatherCondition = (code?: number) => {

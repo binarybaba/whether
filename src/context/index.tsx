@@ -27,7 +27,7 @@ type ChangeSystemAction = {
 
 type FavoriteAction = {
   type: ActionType.FAVORITE;
-  payload: { geocode: MapsCoGeocode; weather: TomorrowForecast };
+  payload: Location;
 };
 
 type Dispatch = (action: ChangeSystemAction | FavoriteAction) => void;
