@@ -15,6 +15,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { FavoriteIt } from "./FavoriteIt";
 import { useAppContext } from "src/hooks";
+import { formatTemperature } from "src/util";
 
 function classNames(...classes: Array<string>) {
   return classes.filter(Boolean).join(" ");
@@ -79,7 +80,9 @@ export const Location = () => {
                 )}
               </div>
               <div className="font-extralight text-6xl text-center text-zinc-700 ">
-                {weather?.timelines.daily[0].values.temperatureAvg}°
+                {formatTemperature(
+                  weather?.timelines.daily[0].values.temperatureAvg
+                )}
               </div>
               <div className="flex justify-center font-semibold text-zinc-500">
                 {getWeatherCondition(
@@ -88,15 +91,23 @@ export const Location = () => {
               </div>
               <div className="flex flex-row justify-center text-zinc-500 font-semibold">
                 <div className="mr-2">
-                  L:{weather?.timelines.daily[0].values.temperatureMin}°
+                  L:
+                  {formatTemperature(
+                    weather?.timelines.daily[0].values.temperatureMin
+                  )}
                 </div>
                 <div>
-                  H:{weather?.timelines.daily[0].values.temperatureMax}°
+                  H:
+                  {formatTemperature(
+                    weather?.timelines.daily[0].values.temperatureMax
+                  )}
                 </div>
               </div>
               <div className="flex flex-row justify-center text-zinc-500 font-light mt-2">
                 Feels like{" "}
-                {weather?.timelines.daily[0].values.temperatureApparentAvg}°
+                {formatTemperature(
+                  weather?.timelines.daily[0].values.temperatureApparentAvg
+                )}
               </div>
             </div>
             <div className="p-4 flex flex-row flex-wrap justify-center items-center">

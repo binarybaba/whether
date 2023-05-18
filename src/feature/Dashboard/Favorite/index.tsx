@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Transition } from "@headlessui/react";
 import { getWeather, getWeatherCondition } from "../../../provider";
 import { useAppContext } from "src/hooks";
+import { formatTemperature } from "src/util";
 
 export const Favorite = ({
   geocode,
@@ -62,11 +63,23 @@ export const Favorite = ({
           leaveTo="opacity-0"
         >
           <div className="font-thin text-6xl text-center text-zinc-700">
-            {weather?.timelines.daily[0].values.temperatureAvg}°
+            {formatTemperature(
+              weather?.timelines.daily[0].values.temperatureAvg
+            )}
           </div>
           <div className="flex justify-between text-xs tracking-tight text-zinc-500">
-            <div>H:{weather?.timelines.daily[0].values.temperatureMax}°</div>
-            <div>L:{weather?.timelines.daily[0].values.temperatureMin}°</div>
+            <div>
+              H:
+              {formatTemperature(
+                weather?.timelines.daily[0].values.temperatureAvg
+              )}
+            </div>
+            <div>
+              L:
+              {formatTemperature(
+                weather?.timelines.daily[0].values.temperatureMin
+              )}
+            </div>
           </div>
         </Transition>
       </div>

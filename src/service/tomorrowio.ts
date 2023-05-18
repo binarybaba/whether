@@ -1,39 +1,25 @@
 import { Coordinates, TomorrowForecast } from "src/types";
 import { UNIT_SYSTEM } from "src/context";
+import axios from "axios";
 
+export const WEATHER_SERVICE_URL =
+  "https://api.tomorrow.io/v4/weather/forecast";
+export const DEFAULT_FIELDS = [
+  "temperature",
+  "humidity",
+  "sunriseTime",
+  "sunsetTime",
+  "visibility",
+];
+// rest of fields in https://docs.tomorrow.io/reference/data-layers-core#data-fields
 export const fetchWeatherByCoordinates = async (
   args: Coordinates & { units: UNIT_SYSTEM }
-): Promise<TomorrowForecast> =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        timelines: {
-          daily: [
-            {
-              time: "",
-              // @ts-ignore
-              values: {
-                temperatureMin: 15,
-                temperatureMax: 17,
-                temperatureAvg: 16,
-                weatherCodeMax: 7114,
-                temperatureApparentAvg: 18,
-                visibilityAvg: 15.87,
-                visibilityMax: 16,
-                visibilityMin: 12.94,
-                humidityAvg: 58.1,
-                humidityMax: 82.69,
-                humidityMin: 39,
-                sunriseTime: "2023-05-17T19:41:00Z",
-                sunsetTime: "2023-05-18T09:33:00Z",
-              },
-            },
-          ],
-        },
-        location: {
-          lat: args.lat,
-          lon: args.lon,
-        },
-      });
-    }, 1000);
-  });
+): Promise<TomorrowForecast> => {
+  const fields = DEFAULT_FIELDS.join(",");
+  const { units, lat, lon } = args;
+  const location = [lat, lon].join(",");
+  const API_KEY = process.env.REACT_APP_TOMORROW_API_KEY;
+  return axios(
+    `${WEATHER_SERVICE_URL}?fields=${fields}&units=${units}&location=${location}&apikey=${API_KEY}`
+  ).then((res) => res.data);
+};
