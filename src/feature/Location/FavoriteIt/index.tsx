@@ -1,15 +1,9 @@
-import {
-  MapsCoGeocode,
-  MapsCoReverseGeocode,
-  TomorrowForecast,
-} from "src/types";
 import { HeartIcon } from "@heroicons/react/20/solid";
-import { useAppContext } from "src/hooks";
-import { ActionType } from "../../../context";
 
-function classNames(...classes: Array<string>) {
-  return classes.filter(Boolean).join(" ");
-}
+import { MapsCoReverseGeocode, TomorrowForecast } from "src/types";
+import { useAppContext } from "src/hooks";
+import { ActionType } from "src/context";
+import { classNames } from "src/util";
 
 export const FavoriteIt = ({
   geocode,

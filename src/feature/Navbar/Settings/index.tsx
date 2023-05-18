@@ -1,12 +1,10 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { CogIcon } from "@heroicons/react/20/solid";
+
 import { ActionType, UNIT_SYSTEM } from "src/context";
 import { useAppContext } from "src/hooks";
-
-function classNames(...classes: Array<string>) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "src/util";
 
 export const Settings = () => {
   const {

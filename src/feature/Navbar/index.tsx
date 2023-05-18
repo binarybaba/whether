@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import { Search } from "./Search";
 import { Settings } from "./Settings";
 import Logo from "src/logo.svg";

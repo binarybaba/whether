@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+
 import { getReverseGeocode, getWeather } from "src/provider";
 import { useAppContext } from "src/hooks";
-import { useEffect } from "react";
-import { ActionType } from "../../../context";
+import { ActionType } from "src/context";
 
 export const MyLocation = ({
   userGeolocation,

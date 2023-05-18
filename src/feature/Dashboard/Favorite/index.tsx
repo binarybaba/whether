@@ -1,7 +1,8 @@
-import { Coordinates, MapsCoReverseGeocode } from "src/types";
 import { useQuery } from "@tanstack/react-query";
 import { Transition } from "@headlessui/react";
-import { getWeather, getWeatherCondition } from "../../../provider";
+
+import { Coordinates, MapsCoReverseGeocode } from "src/types";
+import { getWeather, getWeatherCondition } from "src/provider";
 import { useAppContext } from "src/hooks";
 import { formatTemperature } from "src/util";
 

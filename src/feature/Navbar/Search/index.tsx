@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useDebouncedValue } from "src/hooks";
-import { getGeocodeListByKeyword } from "src/provider";
-import { MapsCoGeocode } from "src/types";
 import { CheckIcon, MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Combobox } from "@headlessui/react";
 
-function classNames(...classes: [string]) {
-  return classes.filter(Boolean).join(" ");
-}
+import { useDebouncedValue } from "src/hooks";
+import { getGeocodeListByKeyword } from "src/provider";
+import { MapsCoGeocode } from "src/types";
+import { classNames } from "src/util";
 
 export const Search = () => {
   const navigate = useNavigate();

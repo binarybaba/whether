@@ -2,24 +2,21 @@ import { useParams } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import { useQuery } from "@tanstack/react-query";
 import {
-  getReverseGeocode,
-  getWeather,
-  getWeatherCondition,
-} from "src/provider";
-import { Tile } from "src/components";
-import {
   SunIcon,
   MoonIcon,
   CloudIcon,
   EyeIcon,
 } from "@heroicons/react/20/solid";
+
+import {
+  getReverseGeocode,
+  getWeather,
+  getWeatherCondition,
+} from "src/provider";
+import { Tile } from "src/components";
 import { FavoriteIt } from "./FavoriteIt";
 import { useAppContext } from "src/hooks";
-import { formatTemperature } from "src/util";
-
-function classNames(...classes: Array<string>) {
-  return classes.filter(Boolean).join(" ");
-}
+import { formatTemperature, classNames } from "src/util";
 
 export const Location = () => {
   const params = useParams();
