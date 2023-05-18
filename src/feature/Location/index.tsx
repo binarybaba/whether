@@ -5,7 +5,7 @@ import {
   getWeather,
   getWeatherCondition,
 } from "src/provider";
-import { Tile } from "./Tile";
+import { Tile } from "src/components";
 import {
   SunIcon,
   MoonIcon,
