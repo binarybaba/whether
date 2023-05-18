@@ -35,7 +35,7 @@ export const Location = () => {
   return (
     <div className="flex justify-center h-full">
       <div className="max-w-6xl flex w-full flex-col md:flex-row justify-center md:justify-around">
-        <div className="flex flex-col justify-center items-center ring">
+        <div className="flex flex-col justify-center items-center">
           <div className="text-xl font-semibold text-zinc-600 text-center -ml-2 flex">
             <div>
               {geocode.address?.city ||
@@ -65,7 +65,7 @@ export const Location = () => {
             {weather?.timelines.daily[0].values.temperatureApparentAvg}°
           </div>
         </div>
-        <div className="p-4 flex flex-row flex-wrap justify-center ring items-center">
+        <div className="p-4 flex flex-row flex-wrap justify-center items-center">
           {weather && (
             <div className=" max-w-sm flex flex-row flex-wrap justify-center">
               <Tile
