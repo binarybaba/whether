@@ -25,7 +25,7 @@ export const Favorite = ({
       <div className="flex flex-col justify-between">
         <div className="align-middle">
           <div className="font-bold text-xl text-zinc-700">
-            {isCurrent ? "My location" : geocode.address?.place}
+            {isCurrent ? "My location" : geocode.address?.city}
           </div>
           <div className="font-light text-xs align-middle text-zinc-500">
             {geocode.address?.country}

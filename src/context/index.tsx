@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useReducer } from "react";
-import type { Location } from "src/types";
+import type { Location, MapsCoGeocode, TomorrowForecast } from "src/types";
 
 export enum UNIT_SYSTEM {
   METRIC = "metric",
@@ -8,6 +8,7 @@ export enum UNIT_SYSTEM {
 
 export enum ActionType {
   CHANGE_UNITS = "CHANGE_UNITS",
+  FAVORITE = "FAVORITE",
 }
 
 type Settings = {
@@ -24,7 +25,12 @@ type ChangeSystemAction = {
   payload: UNIT_SYSTEM.METRIC | UNIT_SYSTEM.IMPERIAL;
 };
 
-type Dispatch = (action: ChangeSystemAction) => void;
+type FavoriteAction = {
+  type: ActionType.FAVORITE;
+  payload: { geocode: MapsCoGeocode; weather: TomorrowForecast };
+};
+
+type Dispatch = (action: ChangeSystemAction | FavoriteAction) => void;
 
 export const DEFAULT_STATE: Store = {
   favorites: [
@@ -36,7 +42,7 @@ export const DEFAULT_STATE: Store = {
         address: {
           country: "Australia",
           country_code: "AU",
-          place: "Sydney",
+          city: "Sydney",
         },
       },
     },
@@ -48,7 +54,7 @@ export const DEFAULT_STATE: Store = {
         address: {
           country: "United Kingdom",
           country_code: "GB",
-          place: "Bristol",
+          city: "Bristol",
         },
       },
     },
@@ -58,7 +64,10 @@ export const DEFAULT_STATE: Store = {
   },
 };
 
-export const reducer = (state: Store, action: ChangeSystemAction): Store => {
+export const reducer = (
+  state: Store,
+  action: ChangeSystemAction | FavoriteAction
+): Store => {
   switch (action.type) {
     case ActionType.CHANGE_UNITS:
       return {
@@ -67,10 +76,13 @@ export const reducer = (state: Store, action: ChangeSystemAction): Store => {
           units: action.payload,
         },
       };
+    case ActionType.FAVORITE:
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload],
+      };
     default: {
-      console.debug(
-        `Action ${action.type} is not configured. Store stays unchanged`
-      );
+      console.debug(`Action is not configured. Store stays unchanged`);
       return state;
     }
   }

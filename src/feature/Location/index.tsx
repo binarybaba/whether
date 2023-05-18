@@ -12,6 +12,7 @@ import {
   CloudIcon,
   EyeIcon,
 } from "@heroicons/react/20/solid";
+import { FavoriteIt } from "./FavoriteIt";
 
 export const Location = () => {
   const params = useParams();
@@ -35,10 +36,15 @@ export const Location = () => {
     <div className="flex justify-center h-full">
       <div className="max-w-6xl flex w-full flex-col md:flex-row justify-center md:justify-around">
         <div className="flex flex-col justify-center items-center ring">
-          <div className="text-xl font-semibold text-zinc-600 text-center -ml-2">
-            {geocode.address?.city ||
-              geocode.address?.municipality ||
-              geocode.address?.county}
+          <div className="text-xl font-semibold text-zinc-600 text-center -ml-2 flex">
+            <div>
+              {geocode.address?.city ||
+                geocode.address?.municipality ||
+                geocode.address?.county}
+            </div>
+            {weather && geocode && (
+              <FavoriteIt geocode={geocode} weather={weather} />
+            )}
           </div>
           <div className="font-extralight text-6xl text-center text-zinc-700 ">
             {weather?.timelines.daily[0].values.temperatureAvg}°
