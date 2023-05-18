@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useReducer } from "react";
-import type { Location, MapsCoGeocode, TomorrowForecast } from "src/types";
+import type { Location } from "src/types";
 
 export enum UNIT_SYSTEM {
   METRIC = "metric",

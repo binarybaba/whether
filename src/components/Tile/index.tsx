@@ -14,7 +14,7 @@ export const formatTileData = (data: Date | number) => {
   if (!data) {
     return undefined;
   }
-  if (typeof data === "object") {
+  if (data instanceof Date) {
     return format(data, "HH:mm");
   }
   return data;

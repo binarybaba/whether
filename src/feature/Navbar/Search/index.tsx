@@ -15,7 +15,7 @@ export const Search = () => {
   const navigate = useNavigate();
   const [typingQuery, setTypingQuery] = useState<string>("");
   const debouncedQuery = useDebouncedValue(typingQuery);
-  const { data: searchResults, isLoading } = useQuery(
+  const { data: searchResults } = useQuery(
     ["lookup", debouncedQuery],
     () => getGeocodeListByKeyword(debouncedQuery),
     { enabled: !!debouncedQuery.length }

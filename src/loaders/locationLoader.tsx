@@ -1,5 +1,4 @@
 import { isCoordinates } from "../util";
-import { getReverseGeocode, getWeather } from "../provider";
 import { LoaderFunction } from "react-router-dom";
 
 type Params = {
