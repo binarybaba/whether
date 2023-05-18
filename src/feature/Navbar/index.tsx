@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Search } from "./Search";
 import { Settings } from "./Settings";
 import Logo from "src/logo.svg";
@@ -5,7 +6,9 @@ import Logo from "src/logo.svg";
 export const Navbar = () => {
   return (
     <div className="relative flex flex-col md:flex-row justify-between p-2 shadow">
-      <img src={Logo} alt="" className="h-10 ml-0 md:ml-4" />
+      <Link to={"/"}>
+        <img src={Logo} alt="" className="h-10 ml-0 md:ml-4" />
+      </Link>
       <div className="w-full md:w-[256px] flex flex-col">
         <Search />
       </div>
