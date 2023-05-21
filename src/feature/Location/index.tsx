@@ -13,7 +13,7 @@ import {
   getWeather,
   getWeatherCondition,
 } from "src/provider";
-import { Tile } from "src/components";
+import { GlobalError, Tile } from "src/components";
 import { FavoriteIt } from "./FavoriteIt";
 import { useAppContext } from "src/hooks";
 import { formatTemperature, classNames } from "src/util";
@@ -30,19 +30,24 @@ export const Location = () => {
     lat: parseFloat(params.lat), // @ts-ignore
     lon: parseFloat(params.lon),
   };
-  const { data: geocode } = useQuery(["reverseGeolocation", coordinates], () =>
-    getReverseGeocode(coordinates)
+  const { data: geocode, error: geocodeError } = useQuery(
+    ["reverseGeolocation", coordinates],
+    () => getReverseGeocode(coordinates)
   );
 
   const {
     data: weather,
     isLoading,
     isFetching,
+    error: weatherError,
   } = useQuery(
     ["weather", { ...coordinates, units }],
     () => getWeather({ ...coordinates, units }),
     { refetchOnWindowFocus: false, retry: false }
   );
+  if (weatherError || geocodeError) {
+    return <GlobalError />;
+  }
 
   return (
     <div className="transition-all">

@@ -10,6 +10,7 @@ import {
 import { Root } from "src/feature/Root";
 import { Location } from "src/feature/Location";
 import { Dashboard } from "src/feature/Dashboard";
+import { NotFound, GlobalError } from "src/components";
 import { locationLoader } from "src/loaders";
 
 const root = ReactDOM.createRoot(
@@ -28,19 +29,10 @@ const router = createBrowserRouter([
         path: "/location/:lat/:lon",
         element: <Location />,
         loader: locationLoader,
-        errorElement: (
-          <div>
-            You lost bro? What kind of location is that? Try search again
-          </div>
-        ),
+        errorElement: <NotFound />,
       },
     ],
-    errorElement: (
-      <div>
-        Something has gone horribly wrong and we are not doing anything to fix
-        it
-      </div>
-    ),
+    errorElement: <GlobalError />,
   },
   {
     path: "*",
