@@ -6,9 +6,10 @@ An app which let's you see the weather of any location on the planet.
 
 ### Run locally
 - Get your Api key from [Tomorrow.io](https://www.tomorrow.io/)
+- Get your Api key from [Maps.co](https://geocode.maps.co/)
 - Install [pnpm](https://pnpm.io/) (yarn/npm might work)
 - clone this repo
-- copy the `.env.template` into a `.env` file and paste your API key
+- copy the `.env.template` into a `.env` file and paste those API keys
 - `pnpm start` (or `yarn start`/ `npm run start`)
 
 > Be mindful of developing in watch mode.
@@ -18,7 +19,7 @@ An app which let's you see the weather of any location on the planet.
 Not the best in class but there are minimal tests added which I thknk should be there at the least
 
 ### See live
-Head over to [this link to see](https://whether-ten.vercel.app) this app live in action :)
+Head over to [this link to see](https://whether-cyan.vercel.app) this app live in action :)
 
 
 -----
@@ -34,8 +35,8 @@ At first, I thought a single service would be enough but as soon as I started th
 adding a search feature, I had to dig in more.
 
 Hence, I landed on 
- - Maps.co (free geocode and reverse lookup)
- - Tomorrow.io
+ - Maps.co (free tier)
+ - Tomorrow.io (free tier)
 
 ### On Architecture
 
